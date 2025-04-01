@@ -1,4 +1,4 @@
-import { listarEPIs, criarEPI, editarEPI, deletarEPI, retirarEPI, devolverEPI, listarHistorico } from '../models/Epi.js';
+import { listarEPIs, criarEPI, editarEPI, deletarEPI, retirarEPI, devolverEPI, listarHistorico, deletarHistorico } from '../models/Epi.js';
 
 const getEPIs = async (req, res) => {
   try {
@@ -8,12 +8,28 @@ const getEPIs = async (req, res) => {
     res.status(500).json({ error: 'Erro ao listar EPIs' });
   }
 };
+
 const getHistorico = async (req, res) => {
   try {
     const epis = await listarHistorico();
     res.json(epis);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao listar Historico' });
+  }
+};
+
+const deleteHistorico = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const historicoDeletado = await deletarHistorico(id);
+    if (!historicoDeletado) {
+      return res.status(404).json({ mensagem: 'Registro não encontrado' });
+    }
+
+    res.status(200).json({ mensagem: 'Registro deletado com sucesso', historicoDeletado });
+  } catch (error) {
+    res.status(500).json({ mensagem: 'Erro ao deletar histórico', error: error.message });
   }
 };
 
@@ -76,7 +92,6 @@ const putEPI = async (req, res) => {
   }
 };
 
-
 const deleteEPI = async (req, res) => {
   const { id } = req.params;
 
@@ -90,4 +105,4 @@ const deleteEPI = async (req, res) => {
   }
 };
 
-export { getEPIs, postEPI, putEPI, deleteEPI, emprestarEPI, receberEPI, getHistorico }
+export { getEPIs, postEPI, putEPI, deleteEPI, emprestarEPI, receberEPI, getHistorico, deleteHistorico }

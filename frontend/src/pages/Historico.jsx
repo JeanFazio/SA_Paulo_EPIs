@@ -20,6 +20,15 @@ const Historico = () => {
         fetchMovimentacoes();
     }, []);
 
+    const deletarHistorico = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3000/epis/historico/${id}`);
+            setMovimentacoes(prev => prev.filter(item => item.id !== id));
+        } catch (error) {
+            console.error("Erro ao deletar histórico:", error);
+        }
+    };
+
     return (
         <div className="container">
             <header className="header">
@@ -45,6 +54,7 @@ const Historico = () => {
                                 <h3>{mov.nome}</h3>
                                 <p className="funcionario">Utilizado por: {mov.funcionario}</p>
                                 <p className="data">Data: {new Date(mov.data).toLocaleDateString('pt-BR')}</p>
+                                <button onClick={() => deletarHistorico(mov.id)}>Excluir</button>
                             </div>
                         ))
                     ) : (
