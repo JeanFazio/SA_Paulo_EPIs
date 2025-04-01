@@ -2,6 +2,9 @@ describe('Função de cadastro, edição e remoção de EPIs', () => {
     it('deve retornar o Epi cadastrado pelo usuário, editar e deletar', () => {
         cy.visit('http://localhost:5173/Epi');
 
+        const alertStub = cy.stub();
+        cy.on('window:alert', alertStub);
+
         // Cadastro de EPI
         cy.get('[name="nome"]').type('Capaquete de Proteção');
         cy.get('[name="quantidade"]').clear().type('20');
@@ -35,6 +38,7 @@ describe('Função de cadastro, edição e remoção de EPIs', () => {
             .click();
 
         cy.get('select').select('Jean Arthur Fazio').parent().find('.btn-confirmar').click();
+        cy.wrap(alertStub).should('be.calledWith', 'Retirado com sucesso');
 
         //Verificando na tela de histórico se possui a retirada
         cy.contains('.nav-link', 'Histórico').click()
@@ -48,10 +52,7 @@ describe('Função de cadastro, edição e remoção de EPIs', () => {
             .click();
 
         cy.get('select').select('Jean Arthur Fazio').parent().find('.btn-confirmar').click();
-
-        cy.on('window:alert', (alertText) => {
-            expect(alertText).to.equal('Devolvido com sucesso');
-        });
+        cy.wrap(alertStub).should('be.calledWith', 'Devolvido com sucesso');
 
     });
 });
