@@ -24,6 +24,7 @@ $hover-color: #8AF0B3;
 
     // Cartões de movimentação
     .movimentacao-card {
+        position: relative;
         background: white;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -53,13 +54,30 @@ $hover-color: #8AF0B3;
 
             &.funcionario {
                 font-style: italic;
-                color: #555; // Cor mais suave para o nome do funcionário
+                color: #555;
             }
 
             &.data {
                 text-align: right;
                 color: #777;
                 font-size: 12px;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: red;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+        
+            &:hover {
+                color: darkred;
+                transform: scale(1.05);
             }
         }
     }

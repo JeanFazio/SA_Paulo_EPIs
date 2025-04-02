@@ -33,7 +33,7 @@ function EditarEPI() {
     <div className="editar-epi-page">
       <header className="header">
         <div className="header-logo">
-          <button className='btn-voltar' onClick={() => navigate('/Epi')}>⬅ Voltar</button>
+          <button className='btn-voltar' onClick={() => navigate('/Epi')}>⬅</button>
           <h1>Master EPIs Manager</h1>
         </div>
       </header>

@@ -59,7 +59,7 @@ function EditarFuncionario() {
     <div className="editar-funcionario-page">
       <header className="header">
         <div className="header-logo">
-          <button className='btn-voltar' onClick={() => navigate('/funcionarios')}>⬅ Voltar</button>
+          <button className='btn-voltar' onClick={() => navigate('/funcionarios')}>⬅</button>
           <h1>Master EPIs Manager</h1>
         </div>
       </header>

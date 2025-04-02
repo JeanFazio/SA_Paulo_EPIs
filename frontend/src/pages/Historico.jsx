@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../SASS/historicoStyle.scss';
+import { FaTimes } from 'react-icons/fa';
 
 const Historico = () => {
     const [movimentacoes, setMovimentacoes] = useState([]);
@@ -51,10 +52,12 @@ const Historico = () => {
                     {Array.isArray(movimentacoes) && movimentacoes.length > 0 ? (
                         movimentacoes.map((mov) => (
                             <div key={mov.id} className="movimentacao-card">
+                                <button className="close-btn" onClick={() => deletarHistorico(mov.id)}>
+                                    <FaTimes />
+                                </button>
                                 <h3>{mov.nome}</h3>
                                 <p className="funcionario">Utilizado por: {mov.funcionario}</p>
                                 <p className="data">Data: {new Date(mov.data).toLocaleDateString('pt-BR')}</p>
-                                <button onClick={() => deletarHistorico(mov.id)}>Excluir</button>
                             </div>
                         ))
                     ) : (
