@@ -14,7 +14,6 @@ $hover-color: #8AF0B3;
         font-weight: bold;
     }
 
-    // Lista de movimentações
     .movimentacoes-list {
         display: flex;
         flex-direction: column;
@@ -22,7 +21,6 @@ $hover-color: #8AF0B3;
         margin: 0;
     }
 
-    // Cartões de movimentação
     .movimentacao-card {
         position: relative;
         background: white;

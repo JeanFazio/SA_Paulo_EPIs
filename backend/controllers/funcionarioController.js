@@ -12,6 +12,9 @@ const getFuncionarios = async (req, res) => {
 const postFuncionario = async (req, res) => {
   try {
     const { nome, cargo, setor, email } = req.body;
+    if (!nome || !cargo || !setor || !email) {
+      return res.status(400).json({ error: 'Preencha todos os campos obrigatórios: nome, cargo, setor e email.' });
+    }
     const novoFuncionario = await criarFuncionario(nome, cargo, setor, email);
     res.json(novoFuncionario);
   } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import '../SASS/historicoStyle.scss';
 import { FaTimes } from 'react-icons/fa';
 
@@ -32,18 +33,7 @@ const Historico = () => {
 
     return (
         <div className="container">
-            <header className="header">
-                <div className="header-logo">
-                    <img src="./src/assets/logo.png" alt="Logo" className="logo" />
-                    <h1>Master EPIs Manager</h1>
-                </div>
-                <nav className="header-nav">
-                    <Link to="/" className="nav-link">Home</Link>
-                    <Link to="/Funcionarios" className="nav-link">Funcionários</Link>
-                    <Link to="/Epi" className="nav-link">Equipamento</Link>
-                    <Link to="/Historico" className="nav-link">Histórico</Link>
-                </nav>
-            </header>
+            <Header />
 
 
             <section className='container-movimentacoes'>
@@ -56,8 +46,8 @@ const Historico = () => {
                                     <FaTimes />
                                 </button>
                                 <h3>{mov.nome}</h3>
-                                <p className="funcionario">Utilizado por: {mov.funcionario}</p>
-                                <p className="data">Data: {new Date(mov.data).toLocaleDateString('pt-BR')}</p>
+                                <p className="funcionario"><strong>Utilizado por:</strong> {mov.funcionario}</p>
+                                <p className="data"><strong>Data:</strong> {new Date(mov.data).toLocaleDateString('pt-BR')}</p>
                             </div>
                         ))
                     ) : (

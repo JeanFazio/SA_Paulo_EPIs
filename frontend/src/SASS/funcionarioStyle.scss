@@ -1,59 +1,113 @@
-$background-color: #f0f0f0;
-$text-color: #333;
-$button-color: #FF784B;
-$button-hover-color: #d9534f;
+$background-color: #f5f7fa;
+$card-bg: rgba(255, 255, 255, 0.7);
+$glass-bg: rgba(255, 255, 255, 0.45);
+$modal-bg: rgba(255, 255, 255, 0.8);
+$text-color: #222;
+$button-color: #6ee89f;
+$button-hover-color: #43ba7c;
+$border-radius: 1.2rem;
+$shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+$danger-color: #d9534f;
+
+//erros
+.form-error-global {
+    color: $danger-color;
+    background: rgba(255, 220, 220, 0.7);
+    border-radius: $border-radius;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: $shadow;
+}
+
+.form-error-field {
+    color: $danger-color;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+    margin-left: 0.5rem;
+    font-weight: 400;
+}
 
 .intro {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    width: 100%;
+    padding: 2rem 1rem;
 
     h2 {
-        font-size: 20px;
+        font-size: 2rem;
         color: $text-color;
-        margin-bottom: 15px;
+        margin-bottom: 2rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
     }
 
     form {
+        background: $glass-bg;
+        box-shadow: $shadow;
+        border-radius: $border-radius;
+        padding: 2rem 2.5rem;
         display: flex;
         flex-direction: column;
-        align-items: baseline;
-        gap: 8px;
+        align-items: center;
+        gap: 1.2rem;
+        width: 100%;
+        max-width: 32rem;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 0rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
         ::-webkit-input-placeholder {
             color: #94A3B8;
         }
 
         input {
-            width: 500px;
-            padding: 8px;
-            border-top: 0px;
-            border-left: 0px;
-            border-width: 1px;
-            border-radius: 4px;
-            font-size: 14px;
+            width: 94%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: $border-radius;
+            font-size: 1rem;
             color: $text-color;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 2px 8px rgba(31, 38, 135, 0.07);
+            margin-bottom: 0.2rem;
 
             &:focus {
-                border-color: $button-color;
+                border: 2px solid $button-color;
                 outline: none;
+                background: #fff;
             }
         }
 
         .btn-cadastrar {
-            margin-top: 5px;
-            padding: 8px 50px;
-            font-size: 14px;
+            margin-top: 0.5rem;
+            padding: 0.9rem 0;
+            width: 100%;
+            font-size: 1.1rem;
             color: #fff;
-            background-color: $button-color;
+            background: linear-gradient(90deg, $button-color 60%, $button-hover-color 100%);
             border: none;
-            border-radius: 60px;
+            border-radius: $border-radius;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            box-shadow: $shadow;
+            transition: background 0.3s, box-shadow 0.3s;
 
             &:hover {
-                background-color: $button-hover-color;
+                background: linear-gradient(90deg, $button-hover-color 60%, $button-color 100%);
+                box-shadow: 0 4px 16px rgba(31, 38, 135, 0.18);
             }
         }
     }
@@ -61,178 +115,282 @@ $button-hover-color: #d9534f;
 
 // Estilo para a seção de lista de funcionários
 .lista-funcionarios {
-    padding: 20px;
+    padding: 2rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h2 {
-        font-size: 18px;
+        font-size: 1.5rem;
         color: $text-color;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
     }
 
     .funcionarios-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .funcionario-card {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        width: 250px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        background: $card-bg;
+        border-radius: $border-radius;
+        box-shadow: $shadow;
+        padding: 2rem 1.2rem;
+        min-width: 0;
         word-break: break-word;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(4px);
 
         h3 {
-            font-size: 16px;
+            font-size: 1.2rem;
             color: $text-color;
-            margin-bottom: 10px;
-            margin-top: 5px;
+            margin-bottom: 0.7rem;
+            margin-top: 0.2rem;
+            font-weight: 600;
         }
 
         p {
-            font-size: 14px;
+            font-size: 1rem;
             color: $text-color;
-            margin-bottom: 14px;
-            margin-top: 5px;
+            margin-bottom: 0.7rem;
+            margin-top: 0.2rem;
         }
 
         .btn-editar {
-            background-color: #28a745;
+            background: linear-gradient(90deg, #28a745 60%, #218838 100%);
             color: #fff;
-            padding: 5px 10px;
+            padding: 0.5rem 1.2rem;
             border: none;
-            border-radius: 4px;
+            border-radius: $border-radius;
             cursor: pointer;
-            margin-right: 5px;
-            font-size: 12px;
-            transition: background-color 0.3s;
+            margin-right: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background 0.3s, box-shadow 0.3s;
 
             &:hover {
-                background-color: #218838;
+                background: linear-gradient(90deg, #218838 60%, #28a745 100%);
+                box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
             }
         }
 
         .btn-deletar {
-            background-color: $button-hover-color;
+            background: linear-gradient(90deg, $danger-color 60%, #c0392b 100%);
             color: #fff;
-            padding: 5px 10px;
+            padding: 0.5rem 1.2rem;
             border: none;
-            border-radius: 4px;
+            border-radius: $border-radius;
             cursor: pointer;
-            font-size: 12px;
-            transition: background-color 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background 0.3s, box-shadow 0.3s;
 
             &:hover {
-                background-color: #c0392b;
+                background: linear-gradient(90deg, #c0392b 60%, $danger-color 100%);
+                box-shadow: 0 2px 8px rgba(217, 83, 79, 0.15);
             }
         }
     }
 }
 
-//Estilo para pagina de edição de funcionario
-.editar-funcionario-page {
+// Modal de edição de funcionário
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: $modal-bg;
+    box-shadow: $shadow;
+    border-radius: $border-radius;
+    padding: 2.2rem 2.5rem 1.5rem 2.5rem;
+    min-width: 0;
+    max-width: 95vw;
+    width: 100%;
+    max-width: 32rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
+}
 
-    .header {
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            padding: 0px;
+.modal-content form {
+    background: none;
+    box-shadow: none;
+    border-radius: $border-radius;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 32rem;
+    border: none;
 
-            .btn-voltar {
-                background-color: transparent;
-                border: none;
-                font-size: 18px;
-                color: $button-color;
-                cursor: pointer;
-                transition: color 0.3s;
-
-                &:hover {
-                    color: $button-hover-color;
-                }
-            }
-
-            h1 {
-                font-size: 24px;
-                color: $text-color;
-            }
-        }
-    }
-
-    h2 {
-        font-size: 20px;
-        color: $text-color;
-        margin-top: 20px;
-        margin-left: 20px;
-    }
-
-    form {
+    .form-group {
+        width: 100%;
+        margin-bottom: 0rem;
         display: flex;
         flex-direction: column;
-        align-items: start;
-        margin-left: 20px;
-        gap: 8px;
+        align-items: flex-start;
+    }
 
-        input {
-            width: 500px;
-            padding: 8px;
-            border-top: 0px;
-            border-left: 0px;
-            border-width: 1px;
-            border-radius: 4px;
-            font-size: 14px;
-            color: $text-color;
+    input {
+        width: 94%;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: $border-radius;
+        font-size: 1rem;
+        color: $text-color;
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 2px 8px rgba(31, 38, 135, 0.07);
+        margin-bottom: 0.2rem;
 
-            &:focus {
-                border-color: $button-color;
-                outline: none;
-            }
+        &:focus {
+            border: 2px solid $button-color;
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 0 2px rgba(138, 240, 179, 0.2);
         }
+    }
 
-        button[type="submit"] {
-            margin-top: 5px;
-            padding: 8px 50px;
-            font-size: 14px;
-            color: #fff;
-            background-color: $button-color;
-            border: none;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+    .btn-cadastrar {
+        margin-top: 0.5rem;
+        padding: 0.9rem 0;
+        width: 100%;
+        font-size: 1.1rem;
+        color: #fff;
+            background: linear-gradient(90deg, $button-color 60%, $button-hover-color 100%);
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        box-shadow: $shadow;
+        transition: background 0.3s, box-shadow 0.3s;
 
-            &:hover {
-                background-color: $button-hover-color;
-            }
+        &:hover {
+            background: linear-gradient(90deg, $button-hover-color 60%, $button-color 100%);
+            box-shadow: 0 4px 16px rgba(31, 38, 135, 0.18);
         }
     }
 }
 
+.modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: $button-color;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10;
+    line-height: 1;
+    font-weight: 700;
+    opacity: 0.7;
+
+    &:hover {
+        color: $button-hover-color;
+        opacity: 1;
+    }
+}
+
+;
+
 .filtro-funcionarios {
-    margin-bottom: 10px;
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 
     ::-webkit-input-placeholder {
         color: #94A3B8;
     }
 
     input[type="text"] {
-        width: 271px;
-        padding: 5px;
-        margin-right: 22px;
-        border-top: 0px;
-        border-left: 0px;
-        border-width: 1px;
-        border-radius: 4px;
-        font-size: 14px;
+        width: 16rem;
+        max-width: 90vw;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: $border-radius;
+        font-size: 1rem;
         color: $text-color;
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 2px 8px rgba(31, 38, 135, 0.07);
         transition: border-color 0.3s;
 
         &:focus {
-            border-color: $button-color;
+            border: 2px solid $button-color;
             outline: none;
+            background: #fff;
         }
+    }
+}
+
+// Responsividade
+@media (max-width: 900px) {
+
+    .intro form,
+    
+    .lista-funcionarios .funcionarios-cards {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .intro {
+        padding: 1rem 0.2rem;
+        min-height: 40vh;
+    }
+
+    .intro h2,
+    .editar-funcionario-page h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .lista-funcionarios {
+        padding: 1rem 0.2rem;
+    }
+
+    .lista-funcionarios .funcionarios-cards {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+
+    .funcionario-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .filtro-funcionarios input[type="text"] {
+        width: 90vw;
+        font-size: 0.95rem;
+        padding: 0.5rem 0.7rem;
     }
 }

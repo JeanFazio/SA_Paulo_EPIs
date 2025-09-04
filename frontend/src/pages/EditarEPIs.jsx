@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../SASS/epiStyle.scss'; 
+import Header from '../components/Header';
 function EditarEPI() {
   const { id } = useParams(); 
   const navigate = useNavigate();
@@ -31,12 +32,7 @@ function EditarEPI() {
 
   return (
     <div className="editar-epi-page">
-      <header className="header">
-        <div className="header-logo">
-          <button className='btn-voltar' onClick={() => navigate('/Epi')}>⬅</button>
-          <h1>Master EPIs Manager</h1>
-        </div>
-      </header>
+  <Header />
 
       <h2>Editar EPI</h2>
       <form onSubmit={atualizarEpi}>
