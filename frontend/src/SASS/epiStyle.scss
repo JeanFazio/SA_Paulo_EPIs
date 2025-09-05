@@ -23,7 +23,7 @@ $btn-devolver-color: #8AF0B3;
     }
 
     form {
-        background: rgba(255,255,255,0.45);
+        background: rgba(255, 255, 255, 0.45);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         border-radius: 1.2rem;
         padding: 2rem 2.5rem;
@@ -107,7 +107,7 @@ $btn-devolver-color: #8AF0B3;
     }
 
     .epi-card {
-        background: rgba(255,255,255,0.7);
+        background: rgba(255, 255, 255, 0.7);
         border-radius: 1.2rem;
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         padding: 2rem 1.2rem;
@@ -254,7 +254,7 @@ $btn-devolver-color: #8AF0B3;
 }
 
 .modal {
-    background: rgba(255,255,255,0.45);
+    background: rgba(255, 255, 255, 0.45);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     border-radius: 1.2rem;
     padding: 2.2rem 2.5rem 1.5rem 2.5rem;
@@ -288,6 +288,7 @@ $btn-devolver-color: #8AF0B3;
     background: rgba(255, 255, 255, 0.85);
     box-shadow: 0 2px 8px rgba(31, 38, 135, 0.07);
     transition: border-color 0.3s;
+
     &:focus {
         border: 2px solid $button-color;
         outline: none;
@@ -316,14 +317,17 @@ $btn-devolver-color: #8AF0B3;
 .modal-buttons .btn-confirmar {
     background: linear-gradient(90deg, $button-color 60%, $button-hover-color 100%);
     color: #fff;
+
     &:hover {
         background: linear-gradient(90deg, $button-hover-color 60%, $button-color 100%);
         box-shadow: 0 4px 16px rgba(31, 38, 135, 0.18);
     }
 }
+
 .modal-buttons .btn-cancelar {
     background: linear-gradient(90deg, #d9534f 60%, #c0392b 100%);
     color: #fff;
+
     &:hover {
         background: linear-gradient(90deg, #c0392b 60%, #d9534f 100%);
         box-shadow: 0 2px 8px rgba(217, 83, 79, 0.15);
@@ -340,7 +344,7 @@ $btn-devolver-color: #8AF0B3;
     box-shadow: none;
     border: none;
     padding: 0;
-    
+
     .form-group {
         width: 100%;
         margin-bottom: 0rem;
@@ -389,5 +393,63 @@ $btn-devolver-color: #8AF0B3;
             background: linear-gradient(90deg, $button-hover-color 60%, $button-color 100%);
             box-shadow: 0 4px 16px rgba(31, 38, 135, 0.18);
         }
+    }
+}
+
+// Responsividade
+@media (max-width: 900px) {
+    .intro-epi form {
+        max-width: 95vw;
+        padding: 1.2rem 0.5rem;
+    }
+
+    .lista-epis .epis-cards {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+
+    .modal {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .intro-epi {
+        padding: 1rem 0.2rem;
+        min-height: 30vh;
+    }
+
+    .intro-epi h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .lista-epis {
+        padding: 1rem 0.2rem;
+    }
+
+    .lista-epis .epis-cards {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+
+    .epi-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .filtro-epis input[type="text"] {
+        width: 90vw;
+        font-size: 0.95rem;
+        padding: 0.5rem 0.7rem;
+    }
+
+    .modal {
+        padding: 1rem 0.2rem;
+    }
+
+    .modal form input {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.7rem;
     }
 }
